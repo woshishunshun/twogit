@@ -1,0 +1,43 @@
+﻿@using DAL;
+@model List<Kq>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Cha", "Default"))
+{
+    <input id="Radio1" type="radio" name="q" /><label>全部</label>
+    <input id="Radio1" type="radio" name="z" /><label>正常</label>
+    <input id="Radio1" type="radio" name="y" /><label>异常</label>
+    <input id="Submit1" type="submit" value="查询" />
+}
+<table>
+    <tr>
+        <td>状态</td>
+        <td>部门</td>
+        <td>工号</td>
+        <td>姓名</td>
+        <td>签到时间</td>
+        <td>签退时间</td>
+        <td>备注</td>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.Zc</td>
+            <td>@i.Bm</td>
+            <td>@i.Gh</td>
+            <td>@i.Name</td>
+            <td>@i.Qdsj</td>
+            <td>@i.Qtsj</td>
+            <td>@i.Bz</td>
+        </tr>
+    }
+</table>
+<label>共 @ViewBag.sl 条记录</label>
+@Html.ActionLink("首页", "Sy");
+@Html.ActionLink("上一页", "Syy");
+@Html.ActionLink("下一页", "Xyy");
+@Html.ActionLink("尾页", "Wy");
